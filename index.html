@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/quiz-style.css">
+</head>
+<body>
+    <header>
+        <button id="btnViewHighScore">View Highscores</button> <!-- links to view highscores -->
+        <p style="display: block">Time: <span id="lblTimer">0</span></p> <!-- hidden timer displayed during quiz -->
+    </header>
+    <main> <!-- container holding questions and stuff -->
+        <h1 id="lblTitle">Coding Quiz Challenge</h1> <!-- header for questions in quiz as well -->
+        <p id="lblInstruction">Try to answer the following code-related questions within the time limit. 
+            <br> Keep in mind that incorrect answers will penalize your score/time<br> by ten seconds!</p>
+        <button id="btnStartQuiz">Start Quiz</button> <!-- starts quiz -->
+        <ul>
+            <!-- dynamically fill this with list items containing answers -->
+        </ul>
+        <div id="divSubmitHighScore"> <!-- end screen to submit info -->
+            <h1>All Done!</h1> <!-- Confirm end of quiz -->
+            <p>Your final score is <span id="lblFinalScore">0</span>.</p> <!-- display final score -->
+            <div id="divSubmitHighScoreInput"> <!-- forum to enter name to submit score -->
+                <p>Enter Initials:
+                <input type="text" id="fName" name="fName" value="">
+                <button id="btnSubmitHighScore">Submit</button></p>
+            </div>
+        </div>
+        <div id="divDisplayHigeScore"> <!-- holds the highscores -->
+            <h1>Highscores</h1>
+            <ol>
+                <!-- Dynamic <li> tags go here -->
+            </ol>
+            <button id="btnGoBack">Go Back</button> <!-- Button to return to main pre-quiz view -->
+            <button id="btnHighScoreClear">Clear Highscores</button> <!-- Resets local memory -->
+        </div>
+    </main>
+  
+    <script src="./assets/js/quiz-script.js"></script>
+</body>
+</html>
