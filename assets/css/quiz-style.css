@@ -18,7 +18,7 @@ body {
     margin: 0.5rem;
     min-height: 98vh;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 25px;
+    font-size: 22px;
     background-color: var(--mainBackground);
 }
 
@@ -47,7 +47,7 @@ main {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 5vh 15vw 5vh 15vw;
+    padding: 5vh 15vw 5vh 15vw;    
 }
 
 main h1 {
@@ -71,6 +71,53 @@ main button:hover {
     background: var(--btnBackgroundHover); 
 }
 
-main #lblInstruction {
+#lstDisplayAnswers {
+    align-self: flex-start;
+    margin-left: 15%;
+}
+
+#lstDisplayAnswers li {
+    margin: 1vh;
+    width: max-content;
+    min-width: 20vw;
+    padding: 10px 10px 10px 10px;
+    background: var(--btnBackground);
+    color: var(--mainBackground);
+    border: 0;
+    border-radius: 7px;  
+    font-size: 130%;
+    cursor: pointer;
+    align-self: flex-start;
+    
+}
+
+#lstDisplayAnswers li:hover {
+    background: var(--btnBackgroundHover); 
+}
+
+main #lblInitContent {
     text-align: center;
+}
+
+.hrcls {
+    width: 100%;    
+    border-top: 5px solid grey;
+}
+
+#highscore-input-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#highscore-input-div > *{
+    margin: 0.5rem;
+}
+
+#highscore-input-div > p {
+    display: inline;
+}
+
+#highscore-input-div > input {
+    width:30%;
 }
