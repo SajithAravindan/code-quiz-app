@@ -1,57 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,200&display=swap"
+      rel="stylesheet"
+    /> <!-- Link Google fonts -->
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/quiz-style.css">
 </head>
-
 <body>
     <header>
-        <button id="btnViewHighScore">View Highscores</button> <!-- links to view highscores -->
-        <p style="display: block"><span id="lblTimer">Time: 0</span></p> <!-- hidden timer displayed during quiz -->
+        <!-- Button to view highscores -->
+        <button id="btnViewHighScore">View Highscores</button>
+        <!-- Time displayed during quiz --> 
+        <p style="display: block"><span id="lblTimer">Time: 0</span></p> 
     </header>
-    <main> <!-- container holding questions and stuff -->
-        <h1 id="lblTitle">Coding Quiz Challenge</h1> <!-- header for questions in quiz as well -->
+    <main> 
+        <!-- h1 used for Initial Title & to display questions-->
+        <h1 id="lblTitle">Coding Quiz Challenge</h1> 
+        <!-- Initial text-->
         <p id="lblInitContent">Try to answer the following code-related questions within the time limit.
             <br> Keep in mind that incorrect answers will penalize your score/time<br> by ten seconds!
         </p>
-        <button id="btnStartQuiz">Start Quiz</button> <!-- starts quiz -->
+        <!-- Button to start Quiz -->
+        <button id="btnStartQuiz">Start Quiz</button> 
         <div style="align-self:first baseline;">
             <ul id="lstDisplayAnswers">
-                <!-- dynamically fill this with list items containing answers -->
+                <!-- space to dynamically generate answers as <li> elements -->
             </ul>
             <br />
+            <!-- Section to display User select answer result -->
             <div id="divResult"  style="align-self:first baseline;">
                 <hr class="hrcls" /><br />
                 <h2 id="hdrResults">Correct!</h2>
             </div>
         </div>
-        <div id="divSubmitHighScore"> <!-- end screen to submit info -->
-            <h1>All Done!</h1> <!-- Confirm end of quiz -->
-            <p>Your final score is <span id="lblFinalScore">0</span>.</p> <!-- display final score -->
-            <div id="divSubmitHighScoreInput"> <!-- forum to enter name to submit score -->
-                <p>Enter Initials:
-                    <input type="text" id="fName" name="fName" value="">
-                    <button id="btnSubmitHighScore">Submit</button>
+        <!-- Section to Submit the User Scores -->
+        <div id="divSubmitHighScore"> 
+            <h1>All Done!</h1>
+            <!-- Section to display user score -->
+            <p>Your final score is <span id="lblFinalScore">0</span>.</p> 
+            <!-- Section to enter User Initials to submit score -->
+            <div id="divSubmitHighScoreInput"> 
+                <p>Enter Initials: 
+                    <input type="text" id="fName" name="fName" value="" placeholder="enter initials">
+                    <button id="btnSubmitHighScore"> Submit </button>
                 </p>
             </div>
         </div>
-        <div id="divDisplayHigeScore"> <!-- holds the highscores -->
+         <!-- Section to display the stored User High Scores -->
+        <div id="divDisplayHigeScore">
             <h1>High scores</h1>
             <ol id="UserHighScore">
-                <!-- Dynamic <li> tags go here -->
+                <!-- space to dynamically generate HighScores as <li> elements -->
             </ol>
-            <button id="btnGoBack">Go back</button> <!-- Button to return to main pre-quiz view -->
-            <button id="btnHighScoreClear">Clear high scores</button> <!-- Resets local memory -->
+             <!-- Button to go back to the begining -->
+            <button id="btnGoBack">Go back</button>
+            <!-- Resets local memory & removes User stored scores -->
+            <button id="btnHighScoreClear">Clear high scores</button> 
         </div>
     </main>
-
     <script src="./assets/js/quiz-script.js"></script>
 </body>
-
 </html>

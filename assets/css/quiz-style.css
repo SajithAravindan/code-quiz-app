@@ -12,17 +12,16 @@
 }
 
 /* Full Body Section Styling */
-
 body {
     position: relative;
     margin: 0.5rem;
     min-height: 98vh;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:  'Titillium Web', Arial, Helvetica, sans-serif; /* The First font family is from Google fonts*/
     font-size: 20px;
     background-color: var(--mainBackground);
 }
 
-
+/* Header Section Styling */
 header {
     display: flex;
     align-content: space-between;
@@ -32,11 +31,12 @@ header {
     padding: 3px 10px 3px 10px;
 }
 
+/* Header Section Styling */
 header p {
-    padding: 3px 10px 3px 10px; /* add same padding as highscores so looks cleaner */
+    padding: 3px 10px 3px 10px;
 }
 
-
+/* Header Section Buttons Styling */
 header button {
     text-decoration: none;
     background: var(--mainBackground);
@@ -46,7 +46,7 @@ header button {
     cursor: pointer;
 }
 
-
+/* Main Section Styling */
 main {
     display: flex;
     flex-direction: column;    
@@ -55,16 +55,17 @@ main {
     padding: 5vh 15vw 5vh 15vw;    
 }
 
+/* Main Section h1 Styling - used for titles & Quiz Questions */
 main h1 {
     margin: 3vh;
     font-size: 200%;
     text-align: center;
 }
 
+/* Main Section Buttons Styling */
 main button {
-    margin: 3vh;
-    width: max-content;
-    padding: 10px 10px 10px 10px;
+    margin: 3vh;    
+    padding: 10px 40px 10px 40px;
     background: var(--btnBackground);
     color: var(--mainBackground);
     border: 0;
@@ -72,15 +73,23 @@ main button {
     cursor: pointer;
 }
 
+/* Main Section Buttons Hover Styling */
 main button:hover {   
-    background: var(--btnBackgroundHover); 
+    background: var(--btnBackgroundHover);    
 }
 
+/* Initial text Styling */
+main #lblInitContent {
+    text-align: center;
+}
+
+/* Main Section Buttons Styling */
 #lstDisplayAnswers {
     align-items: flex-start;
-    margin-left: 50%;    
+    margin-left: 60%;    
 }
 
+/* Styling for the Section LI that displays Answers */
 #lstDisplayAnswers li {    
     margin: 2vh;
     width: max-content;
@@ -94,10 +103,12 @@ main button:hover {
     cursor: pointer;   
 }
 
+/* Styling for the Answers Section LI Hover*/
 #lstDisplayAnswers li:hover {
     background: var(--btnBackgroundHover); 
 }
 
+/* Styling for the Section LI that displays User High Scores */
 #divDisplayHigeScore ol li {
     margin: 1vh;
     width: 100%;
@@ -108,40 +119,27 @@ main button:hover {
     font-size: 30px;  
 }
 
-main #lblInitContent {
-    text-align: center;
-}
-
+/* Styling for the Section that displays User Scores Result*/
 #divResult {
     align-items:flex-start;
-    margin-left: 50%;
+    margin-left: 65%;
     width: 100%; 
     font-style: italic; 
     font-size: 20px;
     color:grey;
 }
 
+/* Styling for the line */
 .hrcls {    
     width: 100%;    
     border-top: 2px solid grey;
 }
 
-
-
-#highscore-input-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#highscore-input-div > *{
-    margin: 0.5rem;
-}
-
-#highscore-input-div > p {
-    display: inline;
-}
-
-#highscore-input-div > input {
-    width:30%;
+/* Styling for the Input textbox */
+#fName {    
+    padding:10px;
+    border: 10px;
+    margin: 0px 0px 0px 10px;
+    box-shadow:0 0 15px 4px grey;
+    border-radius:10px;
 }
