@@ -5,6 +5,11 @@ An application that take a timed quiz on JavaScript fundamentals that stores hig
 User Story & Acceptance Criteria follow the AS AN / I WANT / SO THAT format.
 
 # User Story
+AS A coding boot camp student
+I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
+SO THAT I can gauge my progress compared to my peers
+
+# Acceptance Criteria
 * GIVEN I am taking a code quiz
 * WHEN I click the start button
 * THEN a timer starts and I am presented with a question
@@ -18,9 +23,7 @@ User Story & Acceptance Criteria follow the AS AN / I WANT / SO THAT format.
 * THEN I can save my initials and score
 
 # Demo
-
 <img src="./assets/images/04-web-apis-homework-demo.gif">
-
 
 # Review
 Deployed Application URL: https://sajitharavindan.github.io/code-quiz-app/
