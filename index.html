@@ -13,7 +13,7 @@
 <body>
     <header>
         <button id="btnViewHighScore">View Highscores</button> <!-- links to view highscores -->
-        <p style="display: block">Time: <span id="lblTimer">0</span></p> <!-- hidden timer displayed during quiz -->
+        <p style="display: block"><span id="lblTimer">Time: 0</span></p> <!-- hidden timer displayed during quiz -->
     </header>
     <main> <!-- container holding questions and stuff -->
         <h1 id="lblTitle">Coding Quiz Challenge</h1> <!-- header for questions in quiz as well -->
@@ -21,12 +21,12 @@
             <br> Keep in mind that incorrect answers will penalize your score/time<br> by ten seconds!
         </p>
         <button id="btnStartQuiz">Start Quiz</button> <!-- starts quiz -->
-        <div style="align-items: flex-start;">
+        <div style="align-self:first baseline;">
             <ul id="lstDisplayAnswers">
                 <!-- dynamically fill this with list items containing answers -->
             </ul>
             <br />
-            <div id="divResult">
+            <div id="divResult"  style="align-self:first baseline;">
                 <hr class="hrcls" /><br />
                 <h2 id="hdrResults">Correct!</h2>
             </div>
@@ -42,12 +42,12 @@
             </div>
         </div>
         <div id="divDisplayHigeScore"> <!-- holds the highscores -->
-            <h1>Highscores</h1>
+            <h1>High scores</h1>
             <ol id="UserHighScore">
                 <!-- Dynamic <li> tags go here -->
             </ol>
-            <button id="btnGoBack">Go Back</button> <!-- Button to return to main pre-quiz view -->
-            <button id="btnHighScoreClear">Clear Highscores</button> <!-- Resets local memory -->
+            <button id="btnGoBack">Go back</button> <!-- Button to return to main pre-quiz view -->
+            <button id="btnHighScoreClear">Clear high scores</button> <!-- Resets local memory -->
         </div>
     </main>
 

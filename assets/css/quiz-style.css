@@ -5,7 +5,7 @@
 
 /* Global Styling  */
 :root {
-    --btnBackground: #060c4e;
+    --btnBackground: #351C75;
     --btnBackgroundHover: #BD60E7;
     --mainBackground: #ffffff;
     --mainTextColor: #000000;
@@ -18,7 +18,7 @@ body {
     margin: 0.5rem;
     min-height: 98vh;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 22px;
+    font-size: 20px;
     background-color: var(--mainBackground);
 }
 
@@ -32,6 +32,11 @@ header {
     padding: 3px 10px 3px 10px;
 }
 
+header p {
+    padding: 3px 10px 3px 10px; /* add same padding as highscores so looks cleaner */
+}
+
+
 header button {
     text-decoration: none;
     background: var(--mainBackground);
@@ -44,7 +49,7 @@ header button {
 
 main {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;    
     align-items: center;
     width: 100%;
     padding: 5vh 15vw 5vh 15vw;    
@@ -72,37 +77,56 @@ main button:hover {
 }
 
 #lstDisplayAnswers {
-    align-self: flex-start;
-    margin-left: 15%;
+    align-items: flex-start;
+    margin-left: 50%;    
 }
 
-#lstDisplayAnswers li {
-    margin: 1vh;
+#lstDisplayAnswers li {    
+    margin: 2vh;
     width: max-content;
     min-width: 20vw;
-    padding: 10px 10px 10px 10px;
+    padding: 20px 20px 20px 10px;
     background: var(--btnBackground);
     color: var(--mainBackground);
     border: 0;
     border-radius: 7px;  
     font-size: 130%;
-    cursor: pointer;
-    align-self: flex-start;
-    
+    cursor: pointer;   
 }
 
 #lstDisplayAnswers li:hover {
     background: var(--btnBackgroundHover); 
 }
 
+#divDisplayHigeScore ol li {
+    margin: 1vh;
+    width: 100%;
+    min-width: 20vw;
+    padding: 10px 10px 10px 10px;
+    border: 0;
+    border-radius: 7px;
+    font-size: 30px;  
+}
+
 main #lblInitContent {
     text-align: center;
 }
 
-.hrcls {
-    width: 100%;    
-    border-top: 5px solid grey;
+#divResult {
+    align-items:flex-start;
+    margin-left: 50%;
+    width: 100%; 
+    font-style: italic; 
+    font-size: 20px;
+    color:grey;
 }
+
+.hrcls {    
+    width: 100%;    
+    border-top: 2px solid grey;
+}
+
+
 
 #highscore-input-div {
     display: flex;
