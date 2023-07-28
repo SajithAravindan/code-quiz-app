@@ -48,184 +48,179 @@ function fnClearUserDetlsScores() {
 }
 
 // function to Display User scores stored in local memory.
+//Function is called when the 'Viewscores' button is clicked.
 function fnDisplayHighScores() {
     //elements needed to hide
-    btnViewHighScore.style.display = "none";
-    btnListedanswer.innerHTML = "";
-    lblResultsection.style.display = "none";
-    lblTimer.style.display = "none";
-    lblTitle.style.display = "none"; 
-    lblInitContent.style.display = "none";
+    btnViewHighScore.style.display = "none";//hide view high score link
+    btnListedanswer.innerHTML = "";//empty the answers
+    lblResultsection.style.display = "none";//hide user selection result
+    lblTimer.style.display = "none";//hide Timer 
+    lblTitle.style.display = "none"; //hide Title/Questions
+    lblInitContent.style.display = "none";//hide initial content - displayed in the start of quiz
     btnStartQuiz.style.display = "none"; //hide start button when game starts
-    divSubmitHighScore.style.display = "none";
-    
-    document.querySelector("#divDisplayHigeScore").style.display = "block";
+    divSubmitHighScore.style.display = "none";//hide submit button for user scores
+
+    document.querySelector("#divDisplayHigeScore").style.display = "block";// Display the High Score section
     var olUserHighScore = document.querySelector("ol");
     olUserHighScore.innerHTML = "";
-    
-    var strStoresUserDetls = JSON.parse(window.localStorage.getItem("localStorageUserDetls")); //parse all local storage highscores
-    if (strStoresUserDetls != null) { 
-        for (let index = 0; index < strStoresUserDetls.length; index++) { 
-            var liUserHighScore = document.createElement("li") 
-            liUserHighScore.textContent = (index + 1) + "." + strStoresUserDetls[index].names + " - " + strStoresUserDetls[index].scores; 
 
+    var strStoresUserDetls = JSON.parse(window.localStorage.getItem("localStorageUserDetls")); //parse all local storage highscores
+    if (strStoresUserDetls != null) { //check for null
+        for (let index = 0; index < strStoresUserDetls.length; index++) { //loop through all
+            var liUserHighScore = document.createElement("li")
+            //write the initial & score to <li>
+            liUserHighScore.textContent = (index + 1) + ".  " + strStoresUserDetls[index].names + "  -  " + strStoresUserDetls[index].scores;
+            //assign different background for alternate rows
             var bgColorHighScore = (index % 2) != 0 ? "background-color:#B9B4C7" : "background-color:#D3CEE3";
             liUserHighScore.setAttribute("style", bgColorHighScore);
-            olUserHighScore.appendChild(liUserHighScore); 
+            olUserHighScore.appendChild(liUserHighScore);
         }
 
-    } else { 
+    } else {//if null then
         var liUserHighScore = document.createElement("p")
-        liUserHighScore.textContent = "No Highscores" 
-        olUserHighScore.appendChild(liUserHighScore); 
+        liUserHighScore.textContent = "Currently there are no highscores!"
+        olUserHighScore.appendChild(liUserHighScore);
     }
 
     return;
 
 }
 
+// Function to store User scores in local memory.
+//Function is called when User submits their score.
 function fnStoreUserScores() {
-    var txtbxUserIntials = document.querySelector("input");
-    var arrPreviousUserData = [];
-    if (txtbxUserIntials.value != "" && txtbxUserIntials.value != null) {
-        var objUserCurrDetls = {
+    var txtbxUserIntials = document.querySelector("input");// gets the user input
+    var arrPreviousUserData = [];//array to store user score
+    if (txtbxUserIntials.value != "" && txtbxUserIntials.value != null) {//chks for null
+        var objUserCurrDetls = {//store user iput into user object
             names: txtbxUserIntials.value.toUpperCase(),
             scores: intUserScore,
         }
-
+        //if the local storage is empty
         if (window.localStorage.getItem("localStorageUserDetls") == null || window.localStorage.getItem("localStorageUserDetls") == "") {
-            arrPreviousUserData.push(objUserCurrDetls);
-            window.localStorage.setItem("localStorageUserDetls", JSON.stringify(arrPreviousUserData));
+            arrPreviousUserData.push(objUserCurrDetls);//add data into user object
+            window.localStorage.setItem("localStorageUserDetls", JSON.stringify(arrPreviousUserData));//convert to json & store it locally.
 
-        } else {
+        } else {//if the local storage is not empty
             arrPreviousUserData = JSON.parse(window.localStorage.getItem("localStorageUserDetls"));
-
+            // add/sort data 
             for (var intIndex = 0; intIndex <= arrPreviousUserData.length; intIndex++) {
-                if (intIndex == arrPreviousUserData.length) {
-                    arrPreviousUserData.push(objUserCurrDetls)
+                if (intIndex == arrPreviousUserData.length) {//end of current local storage array
+                    arrPreviousUserData.push(objUserCurrDetls)//adds new score to the end of current local storage array
                     break;
                 } else if (arrPreviousUserData[intIndex].scores < intUserScore) {
-                    arrPreviousUserData.splice(intIndex, 0, objUserCurrDetls);
+                    arrPreviousUserData.splice(intIndex, 0, objUserCurrDetls);//adds new score to current position
                     break;
                 }
             }
+            //re-store back locally.
             window.localStorage.setItem("localStorageUserDetls", JSON.stringify(arrPreviousUserData))
         }
         document.querySelector("input").value = "";
         btnListedanswer.innerHTML = "";
-        intTimeLeft = 0;
-        intUserScore = 0;
-        fnDisplayHighScores();
+        intTimeLeft = 0;//reset timer time
+        intUserScore = 0;//reset user score
+        fnDisplayHighScores();//display all scores.
     }
     return;
 }
 
+//Function called when the timer runs out and the quiz ends
 function fnQuizEnd() {
-
-    blnGameEnded = true;
-    intUserScore = intTimeLeft; 
-
+    blnGameEnded = true;//end game status
+    intUserScore = intTimeLeft;//assign Time left to user score
     //hide necessary elements
-    lblResultsection.style.display = "none"; 
-    lblTitle.style.display = "none"; 
-    btnListedanswer.innerHTML = ''; 
-
-    
-    document.querySelector("#lblFinalScore").textContent = intUserScore + 1;
-    divSubmitHighScore.style.display = "block";
-
+    lblResultsection.style.display = "none";
+    lblTitle.style.display = "none";
+    btnListedanswer.innerHTML = '';
+    lblTimer.textContent = "Time :" + intTimeLeft;//display time left
+    document.querySelector("#lblFinalScore").textContent = intUserScore;//Display user final score
+    divSubmitHighScore.style.display = "block";//Display Score Submission Section
     return;
 }
 
+//Function called to generate the next Question
 function fnNextQuestion() {
-    
-    intCurrQuesIndexNum++; 
-    if (intCurrQuesIndexNum >= questionObj.questions.length) { 
-        fnQuizEnd(); 
-    } else { 
-        fnGenerateQuestions(intCurrQuesIndexNum); 
-    } 
-
+    intCurrQuesIndexNum++;//increment the current question number.
+    if (intCurrQuesIndexNum >= questionObj.questions.length) {//if current question number >= end of questions array length.
+        fnQuizEnd();//End Quiz
+    } else {
+        fnGenerateQuestions(intCurrQuesIndexNum);//Generate the next question
+    }
     return;
-
 }
 
+//Funtion is called when user selects one of the answers option.
 function fnUserAnswerCheck(event) {
-    if (event.target != btnListedanswer) { 
-        var intUserSelection = event.target.getAttribute("data-index");
+    if (event.target != btnListedanswer) {
+        var intUserSelection = event.target.getAttribute("data-index");//get the index data of the answer option
         lblResultsection.style.display = 'block'
-        if (questionObj.correctanswers[intCurrQuesIndexNum] != intUserSelection) { 
-            intTimeLeft -= 10; 
+        if (questionObj.correctanswers[intCurrQuesIndexNum] != intUserSelection) {//selected option if not equal index of the answers array
+            intTimeLeft -= 10;//decrement the time
             lblDisplayResults.innerHTML = "Wrong!"
         }
         else {
             lblDisplayResults.innerHTML = "Correct!"
         }
-        fnNextQuestion(); 
+
+        fnNextQuestion();// generate next question
     }
     return;
 }
 
+//Function is called when user click 'Start Quiz' button
 function fnQuizStart() {
-   
-    blnGameEnded = false;
-    intCurrQuesIndexNum = 0; 
-    
-    btnStartQuiz.style.display = "none"; 
-    lblInitContent.style.display = "none"; 
-
-    lblTimer.style.display = "block"; 
-    
-
-    
-    fnGenerateQuestions(intCurrQuesIndexNum); 
-    fnStartTimer(); 
-
+    blnGameEnded = false;//game status 
+    intCurrQuesIndexNum = 0;//current question number
+    btnStartQuiz.style.display = "none";// Hide start button
+    lblInitContent.style.display = "none";// Hide initial content
+    lblTimer.style.display = "block";//Display timer 
+    fnGenerateQuestions(intCurrQuesIndexNum);//generate first question
+    fnStartTimer();//Start timer
     return;
 }
 
+//Function called to generate the Question
 function fnGenerateQuestions(intQuestionIndex) {
-    lblTitle.textContent = questionObj.questions[intQuestionIndex]; 
-    createAnswerElements(intQuestionIndex); 
+    lblTitle.textContent = questionObj.questions[intQuestionIndex];//Display the question
+    createAnswerElements(intQuestionIndex);//create the relevant answers options.
     return;
 }
 
+//Function called to generate the relevant answers options for a specific question
 function createAnswerElements(intCurrentQuestionIndex) {
-    btnListedanswer.innerHTML = "";
-
-    for (var intAnsIndex = 0; intAnsIndex < questionObj.answers[intCurrentQuestionIndex].length; intAnsIndex++) { 
-        var answerListItem = document.createElement("li");         
+    btnListedanswer.innerHTML = "";//clear answer options if any
+    for (var intAnsIndex = 0; intAnsIndex < questionObj.answers[intCurrentQuestionIndex].length; intAnsIndex++) {
+        //create the <li> element with the options
+        var answerListItem = document.createElement("li");
         answerListItem.textContent = (intAnsIndex + 1) + ". " + questionObj.answers[intCurrentQuestionIndex][intAnsIndex];
-        answerListItem.setAttribute("Data-index", intAnsIndex); 
-        btnListedanswer.appendChild(answerListItem); 
+        answerListItem.setAttribute("Data-index", intAnsIndex);
+        btnListedanswer.appendChild(answerListItem);
     }
-
     return;
 }
 
+//Function called to Start timer
 function fnStartTimer() {
     var timerInterval = setInterval(function () {
-        if (blnGameEnded === true) { 
-            clearInterval(timerInterval); 
+        if (blnGameEnded === true) {//game ended.
+            clearInterval(timerInterval);
             return;
         }
-        if (intTimeLeft < 1) { 
-            clearInterval(timerInterval); 
-            fnQuizEnd(); 
+        if (intTimeLeft < 1) {//time runs out
+            clearInterval(timerInterval);
+            fnQuizEnd();
         }
-
-        lblTimer.textContent = "Time :" + intTimeLeft; 
-        intTimeLeft--; 
-    }, 1000); 
-
+        intTimeLeft--;//decrement the time
+        lblTimer.textContent = "Time :" + intTimeLeft;//display time left        
+    }, 1000);
     return;
 }
 
 
-function fnQuizIntialize() {
-    //
-    lblTitle.textContent = "Coding Quiz Challenge";
-    blnGameEnded = true;
+function fnQuizIntialize() {    
+    lblTitle.textContent = "Coding Quiz Challenge";// Initial Title
+    blnGameEnded = true;//resets gmae status
     intTimeLeft = intGlobalIntialTimer; //reset the time back to 75 seconds
     lblTimer.textContent = "Time : 0"; //set the default number of the timer
     // Hide unwanted items
@@ -235,7 +230,6 @@ function fnQuizIntialize() {
 
     //display items that are needed for the "main menu"
     lblTitle.style.display = "block";
-    
     lblTimer.style.display = "block";
     lblInitContent.style.display = "block";
     btnViewHighScore.style.display = "block";
